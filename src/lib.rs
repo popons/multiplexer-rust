@@ -98,9 +98,9 @@ fn it_works() {
     // start echo client
     let mut tcp_client = TcpStream::connect("127.0.0.1:54321").unwrap();
 
-    let mut src_a: Box<Source<ABC>> = Box::new(_src_a);
-    let mut src_b: Box<Source<ABC>> = Box::new(_src_b);
-    let mut src_c: Box<Source<ABC>> = Box::new(tcp_client.try_clone().unwrap());
+    let src_a: Box<Source<ABC>> = Box::new(_src_a);
+    let src_b: Box<Source<ABC>> = Box::new(_src_b);
+    let src_c: Box<Source<ABC>> = Box::new(tcp_client.try_clone().unwrap());
 
     let fanout = start_multiplex(vec![src_a, src_b, src_c]);
 
